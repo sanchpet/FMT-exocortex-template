@@ -59,8 +59,8 @@ l18=$(awk "/$AUTHOR_SECTION/{exit} {print}" "$SRC")
 
 # 2. Применить placeholder-подстановки
 l18_tmpl=$(printf '%s' "$l18" \
-    | sed "s|$HOME|{{HOME_DIR}}|g" \
-    | sed "s|~/IWE|{{HOME_DIR}}/IWE|g" \
+    | sed "s|$HOME|/home/petrov_ad|g" \
+    | sed "s|~/IWE|/home/petrov_ad/IWE|g" \
     | sed "s|$GOV_REPO_AUTHOR|$GOV_REPO_TMPL|g")
 
 # 3. Взять §9 из FMT без изменений (шаблонная версия, не авторская)
@@ -88,5 +88,19 @@ fi
 
 printf '%s\n' "$result" > "$FMT"
 echo "✅ Синхронизировано: CLAUDE.md → FMT/CLAUDE.md"
+
+# 5. Валидация FMT/scripts/ на личные хардкоды
+VALIDATOR="$FMT_DIR/scripts/validate-fmt-scripts.sh"
+if [ -f "$VALIDATOR" ]; then
+    echo ""
+    bash "$VALIDATOR" "$FMT_DIR/scripts" || {
+        echo "⚠️  Личные хардкоды в FMT/scripts/ — исправить до коммита" >&2
+    }
+fi
+
+CHANGELOG_SCRIPT="$FMT_DIR/scripts/changelog-append.sh"
+[[ -f "$CHANGELOG_SCRIPT" ]] && bash "$CHANGELOG_SCRIPT" || true
+
+echo ""
 echo "Следующий шаг:"
-echo "  cd $FMT_DIR && git diff CLAUDE.md && git add CLAUDE.md && git commit"
+echo "  cd $FMT_DIR && git diff CLAUDE.md && git add CLAUDE.md CHANGELOG.md && git commit"
