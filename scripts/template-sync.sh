@@ -59,8 +59,8 @@ l18=$(awk "/$AUTHOR_SECTION/{exit} {print}" "$SRC")
 
 # 2. Применить placeholder-подстановки
 l18_tmpl=$(printf '%s' "$l18" \
-    | sed "s|$HOME|/home/petrov_ad|g" \
-    | sed "s|~/IWE|/home/petrov_ad/IWE|g" \
+    | sed "s|$HOME|{{HOME_DIR}}|g" \
+    | sed "s|~/IWE|{{HOME_DIR}}/IWE|g" \
     | sed "s|$GOV_REPO_AUTHOR|$GOV_REPO_TMPL|g")
 
 # 3. Взять §9 из FMT без изменений (шаблонная версия, не авторская)
