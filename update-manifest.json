@@ -48,6 +48,9 @@
       "path": ".claude/hooks/protocol-artifact-validate.sh"
     },
     {
+      "path": ".claude/hooks/memory-exocortex-sync.sh"
+    },
+    {
       "path": ".claude/hooks/protocol-completion-reminder.sh"
     },
     {
@@ -646,6 +649,9 @@
     },
     {
       "path": "scripts/day-close.sh"
+    },
+    {
+      "path": "scripts/restore-from-exocortex.sh"
     },
     {
       "path": "scripts/day-open-scaffold.sh"
