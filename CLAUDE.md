@@ -75,11 +75,7 @@
 
 ### IntegrationGate — явный чеклист (БЛОКИРУЮЩЕЕ)
 
-<<<<<<< /var/folders/17/cljrvcp114xdk4hc7pnz7lm00000gn/T/tmp.104eEkLyQw/claude-merge.md
-> При проектировании нового инструмента, агента, детектора, системы или метода соблюдать строгую последовательность фаз. Пропуск фазы = паттерн P10 (DP.FM.010). Фиксировать как инцидент в журнал `DS-ecosystem-development/C.IT-Platform/C2.IT-Platform/C2.3.Operations/Incidents/`.
-=======
 > При проектировании нового инструмента, агента, детектора, системы или метода соблюдать строгую последовательность фаз. Пропуск фазы = паттерн P10 (DP.FM.010). Фиксировать как инцидент в журнал `<governance-repo>/C.IT-Platform/C2.IT-Platform/C2.3.Operations/Incidents/`.
->>>>>>> /var/folders/17/cljrvcp114xdk4hc7pnz7lm00000gn/T/tmp.104eEkLyQw/files/CLAUDE.md
 
 1. **Обещание (Service Clause).** Какое обещание инструмент даёт потребителю? Создать/обновить `DP.SC.NNN` в `PACK-digital-platform/.../08-service-clauses/`. Обещание содержит: триггер, входы, выходы, время отклика, инвариант (что гарантируется), режим отказа.
 2. **Сценарии использования.** Кто запускает? Когда? Зачем? В каком контексте? Что делает с результатом? Минимум 3 сценария с разными потребителями. Приложить к Service Clause.
@@ -303,8 +299,4 @@ schema_version: 1
 
 ---
 
-<<<<<<< /var/folders/17/cljrvcp114xdk4hc7pnz7lm00000gn/T/tmp.104eEkLyQw/claude-merge.md
-*Последнее обновление: 2026-05-20*
-=======
 *Последнее обновление: 2026-05-26*
->>>>>>> /var/folders/17/cljrvcp114xdk4hc7pnz7lm00000gn/T/tmp.104eEkLyQw/files/CLAUDE.md
