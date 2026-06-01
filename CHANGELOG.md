@@ -48,6 +48,12 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 
 
+## [Unreleased]
+
+### Added
+
+- Peer-session report template: content-roles section (§1.5) + frontmatter fields `roles`, `ad_hoc_roles`, `discovery_turns`. Synthesizer now reads `meta.yaml` to include assigned content-roles in `report.md`/`report-draft.md`.
+
 ## [0.35.0] — 2026-06-01
 
 ### Added — WP-337 направление З Ф6: Peer-session инфраструктура в шаблоне
