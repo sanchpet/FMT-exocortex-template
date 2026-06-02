@@ -56,7 +56,7 @@ if [ ! -d "$EXOCORTEX_SRC" ]; then
 fi
 
 # Отказ от тихой перезаписи населённой memory/ (если не --force)
-if [ -d "$MEMORY_DST" ] && [ -n "$(ls -A "$MEMORY_DST" 2>/dev/null)" ] && ! $FORCE; then
+if [ -d "$MEMORY_DST" ] && [ -n "$(ls -A "$MEMORY_DST" 2>/dev/null)" ] && ! $FORCE && ! $DRY_RUN; then
     err "memory/ уже не пуста: $MEMORY_DST"
     err "Это похоже на существующую инсталляцию. Для перезаписи — --force (или --dry-run для превью)."
     exit 1
