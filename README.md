@@ -1,7 +1,7 @@
 # IWE — Intellectual Work Environment
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.22.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.35.3-blue.svg)](CHANGELOG.md)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows%20(WSL)-lightgrey.svg)]()
 
 > Операционная система интеллектуальной работы. Ваши знания. Ваш опыт. Ваша среда — работает поверх любой AI-платформы.
@@ -134,7 +134,9 @@ IWE — для тех, кто хочет это изменить:
 
 **Полная установка** от чистого компьютера: **[SETUP-GUIDE.md](docs/SETUP-GUIDE.md)** -- 30-60 минут с установкой всех зависимостей.
 
-**Не на macOS или не Claude Code?** Читай **[PORTABILITY.md](docs/PORTABILITY.md)** — что нужно адаптировать, а что универсально.
+**Не на macOS или не Claude Code?** Читай **[PORTABILITY.md](docs/PORTABILITY.md)** — инструкции для Kimi Code, Hermes Agent и других.
+
+**Другой агент или LLM?** IWE не привязан к Claude. Если твой агент видит файлы в папке репо и умеет редактировать файлы — он заработает. Как подключить → [PORTABILITY.md](docs/PORTABILITY.md).
 
 ```bash
 mkdir -p ~/IWE && cd ~/IWE
@@ -204,7 +206,13 @@ multiplier_enabled: true    # Мультипликатор IWE
 A: Для полной установки (Claude Code) — рекомендуется Claude Pro ($20/мес). При необходимости можно перейти на Claude Max (~$100/мес) для работы без ограничений. Для минимальной (`setup.sh --core`) — работает с любым AI CLI. Подробнее: [SETUP-GUIDE.md](docs/SETUP-GUIDE.md).
 
 **Q: Работает ли с другими ИИ (не Claude)?**
-A: Частично. Все знания хранятся в открытых форматах (Markdown, YAML, Git) -- они переживут смену любого вендора. Но автоматика (протоколы ОРЗ, скиллы, хуки, роли) заточена под Claude Code CLI. Для Codex (OpenAI), Aider или других AI CLI потребуется адаптация `.claude/` и скриптов ролей. Минимальная установка (`setup.sh --core`) работает без привязки к конкретному LLM.
+A: Да, три агента поддерживаются из коробки:
+- **Claude Code** — полная поддержка: читает `CLAUDE.md`, все скиллы и хуки работают.
+- **Kimi Code** (VS Code) — читает `AGENTS.md` автоматически при открытии репо. Кастомизация: `extensions/` или `AGENTS-agent-blocks.md`. Скиллы (`/day-open` и др.) через Claude Code.
+- **Hermes Agent** — подключи Aisystant MCP через настройки Hermes, и он получит инструкции автоматически.
+
+Для других агентов (Cursor, Copilot, Gemini) потребуется адаптация. Подробнее: [PORTABILITY.md](docs/PORTABILITY.md).
+Минимальная установка (`setup.sh --core`) работает без привязки к конкретному агенту.
 
 **Q: Работает ли на Linux/Windows?**
 A: Да. Ядро работает на любой ОС. Автоматизация Стратега: macOS — launchd, Linux — cron, Windows — WSL. Подробнее: [SETUP-GUIDE.md](docs/SETUP-GUIDE.md).
