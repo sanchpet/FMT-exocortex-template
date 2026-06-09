@@ -279,27 +279,6 @@
       "path": ".githooks/pre-commit"
     },
     {
-      "path": ".github/ISSUE_TEMPLATE/bug_report.md"
-    },
-    {
-      "path": ".github/ISSUE_TEMPLATE/feature_request.md"
-    },
-    {
-      "path": ".github/workflows/cloud-scheduler.yml"
-    },
-    {
-      "path": ".github/workflows/notify-update.yml"
-    },
-    {
-      "path": ".github/workflows/post-release-audit.yml"
-    },
-    {
-      "path": ".github/workflows/stale.yml"
-    },
-    {
-      "path": ".github/workflows/validate-template.yml"
-    },
-    {
       "path": ".gitignore"
     },
     {
@@ -831,109 +810,7 @@
       "path": "setup.sh"
     },
     {
-      "path": "setup/build-runtime.sh"
-    },
-    {
-      "path": "setup/detector-fixtures/README.md"
-    },
-    {
-      "path": "setup/detector-fixtures/detector_07/positive_backtick_slash.md"
-    },
-    {
-      "path": "setup/detector-regex.sh"
-    },
-    {
-      "path": "setup/install-iwe-paths.sh"
-    },
-    {
-      "path": "setup/integration-contract-validator.sh"
-    },
-    {
-      "path": "setup/optional/COVER-IMAGES.md"
-    },
-    {
-      "path": "setup/optional/README.md"
-    },
-    {
-      "path": "setup/optional/generate-post-image.py"
-    },
-    {
-      "path": "setup/optional/pomodoro-alert.plist"
-    },
-    {
-      "path": "setup/optional/pomodoro-alert.py"
-    },
-    {
-      "path": "setup/optional/setup-agent-workspace.sh"
-    },
-    {
-      "path": "setup/optional/setup-calendar.sh"
-    },
-    {
-      "path": "setup/optional/setup-cloud-scheduler.sh"
-    },
-    {
-      "path": "setup/promote-fixtures/README.md"
-    },
-    {
-      "path": "setup/promote-fixtures/sample-hook.sh"
-    },
-    {
-      "path": "setup/promote-fixtures/sample-script.sh"
-    },
-    {
-      "path": "setup/promote-fixtures/sample-settings.json"
-    },
-    {
-      "path": "setup/promote-fixtures/sample-skill/SKILL.md"
-    },
-    {
-      "path": "setup/promote-fixtures/sample-skill/scripts/sample-tool.sh"
-    },
-    {
-      "path": "setup/release-audit-prompt.md"
-    },
-    {
-      "path": "setup/smoke-test-fresh-install.sh"
-    },
-    {
-      "path": "setup/test-detectors.sh"
-    },
-    {
-      "path": "setup/ux-walkthrough-prompt.md"
-    },
-    {
-      "path": "setup/validate-template.sh"
-    },
-    {
       "path": "shared/rubrics/form-089.yaml"
-    },
-    {
-      "path": "templates/strategy-skeleton/CLAUDE.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/Lifework/README.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/README.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/current/README.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/docs/Caliber-artifacts-tracker.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/docs/Dissatisfactions.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/docs/Strategy.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/docs/WP-REGISTRY.md"
-    },
-    {
-      "path": "templates/strategy-skeleton/inbox/fleeting-notes.md"
     },
     {
       "path": "update.sh"
@@ -942,6 +819,9 @@
   "excluded_paths": [
     "AGENTS-agent-blocks.md",
     "docs/BROWSER-CI-TEMPLATE.md",
+    "docs/developer/README.md",
+    "docs/developer/card-template.md",
+    "docs/developer/developer-guide.md",
     "docs/maintaining-skills.md",
     "docs/release-audit-log.md",
     "promotion-status.yaml",
