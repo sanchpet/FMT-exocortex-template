@@ -20,6 +20,10 @@ RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
 CHECK_ONLY=false
 AUTO_YES=false
 
+# Allow extra curl flags via env var (e.g. CURL_OPTS="--insecure" for Windows corporate firewall).
+# shellcheck disable=SC2086  # $CURL_BASE_OPTS intentionally unquoted (multi-token flag)
+CURL_BASE_OPTS="${CURL_OPTS:-}"
+
 for arg in "$@"; do
     case "$arg" in
         --check|--dry-run)  CHECK_ONLY=true ;;
@@ -87,7 +91,7 @@ echo ""
 # === Step 0: Self-update (bootstrap) ===
 echo "[0] Проверка update.sh..."
 REMOTE_UPDATE="$TMPDIR_UPDATE/update.sh.new"
-if curl -sSfL "$RAW_BASE/update.sh" -o "$REMOTE_UPDATE" 2>/dev/null; then
+if curl $CURL_BASE_OPTS -sSfL "$RAW_BASE/update.sh" -o "$REMOTE_UPDATE" 2>/dev/null; then
     LOCAL_HASH=$(hash_file "$SCRIPT_DIR/update.sh")
     REMOTE_HASH=$(hash_file "$REMOTE_UPDATE")
     if [ "$LOCAL_HASH" != "$REMOTE_HASH" ]; then
@@ -106,7 +110,7 @@ echo "[1] Загрузка манифеста..."
 MANIFEST_URL="$RAW_BASE/update-manifest.json"
 MANIFEST="$TMPDIR_UPDATE/manifest.json"
 
-if ! curl -sSfL "$MANIFEST_URL" -o "$MANIFEST" 2>/dev/null; then
+if ! curl $CURL_BASE_OPTS -sSfL "$MANIFEST_URL" -o "$MANIFEST" 2>/dev/null; then
     echo "ОШИБКА: Не удалось загрузить манифест обновлений."
     echo "  URL: $MANIFEST_URL"
     echo "  Проверьте подключение к интернету."
@@ -155,7 +159,7 @@ while IFS='|' read -r fpath fdesc; do
     REMOTE_FILE="$TMPDIR_UPDATE/files/$fpath"
     mkdir -p "$(dirname "$REMOTE_FILE")"
 
-    if ! curl -sSfL "$RAW_BASE/$fpath" -o "$REMOTE_FILE" 2>/dev/null; then
+    if ! curl $CURL_BASE_OPTS -sSfL "$RAW_BASE/$fpath" -o "$REMOTE_FILE" 2>/dev/null; then
         continue
     fi
 
