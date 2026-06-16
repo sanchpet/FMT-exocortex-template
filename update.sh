@@ -33,6 +33,19 @@ AUTO_YES=false
 # shellcheck disable=SC2086  # $CURL_BASE_OPTS intentionally unquoted (multi-token flag)
 CURL_BASE_OPTS="${CURL_OPTS:-}"
 
+# Windows (msys/cygwin) schannel backend may fail with CRYPT_E_NO_REVOCATION_CHECK.
+# Detect the best available SSL revocation flag without making a network call.
+_CURL_SSL_OPT=""
+case "${OSTYPE:-}" in
+  msys*|cygwin*)
+    if curl --help 2>&1 | grep -q "ssl-revoke-best-effort"; then
+      _CURL_SSL_OPT="--ssl-revoke-best-effort"
+    elif curl --help 2>&1 | grep -q "ssl-no-revoke"; then
+      _CURL_SSL_OPT="--ssl-no-revoke"
+    fi
+    ;;
+esac
+
 for arg in "$@"; do
     case "$arg" in
         --check|--dry-run)  CHECK_ONLY=true ;;
@@ -100,7 +113,7 @@ echo ""
 # === Step 0: Self-update (bootstrap) ===
 echo "[0] Проверка update.sh..."
 REMOTE_UPDATE="$TMPDIR_UPDATE/update.sh.new"
-if curl $CURL_BASE_OPTS -sSfL "$RAW_BASE/update.sh" -o "$REMOTE_UPDATE" 2>/dev/null; then
+if curl $CURL_BASE_OPTS $_CURL_SSL_OPT -sSfL "$RAW_BASE/update.sh" -o "$REMOTE_UPDATE" 2>/dev/null; then
     LOCAL_HASH=$(hash_file "$SCRIPT_DIR/update.sh")
     REMOTE_HASH=$(hash_file "$REMOTE_UPDATE")
     if [ "$LOCAL_HASH" != "$REMOTE_HASH" ]; then
@@ -119,7 +132,7 @@ echo "[1] Загрузка манифеста..."
 MANIFEST_URL="$RAW_BASE/update-manifest.json"
 MANIFEST="$TMPDIR_UPDATE/manifest.json"
 
-if ! curl $CURL_BASE_OPTS -sSfL "$MANIFEST_URL" -o "$MANIFEST" 2>/dev/null; then
+if ! curl $CURL_BASE_OPTS $_CURL_SSL_OPT -sSfL "$MANIFEST_URL" -o "$MANIFEST" 2>/dev/null; then
     echo "ОШИБКА: Не удалось загрузить манифест обновлений."
     echo "  URL: $MANIFEST_URL"
     echo "  Проверьте подключение к интернету."
@@ -169,7 +182,7 @@ while IFS='|' read -r fpath fdesc; do
     REMOTE_FILE="$TMPDIR_UPDATE/files/$fpath"
     mkdir -p "$(dirname "$REMOTE_FILE")"
 
-    if ! curl $CURL_BASE_OPTS -sSfL "$RAW_BASE/$fpath" -o "$REMOTE_FILE" 2>/dev/null; then
+    if ! curl $CURL_BASE_OPTS $_CURL_SSL_OPT -sSfL "$RAW_BASE/$fpath" -o "$REMOTE_FILE" 2>/dev/null; then
         continue
     fi
 
