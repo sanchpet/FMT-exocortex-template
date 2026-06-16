@@ -2,7 +2,7 @@
 name: skill-creator
 description: |
   Create a new IWE skill with proper frontmatter, gates, scaffold and verification.
-  Use when the pilot says: /skill-creator, /create-skill, or «создай скилл <name>».
+  Use when the pilot says: /skill-creator or «создай скилл <name>».
   The skill enforces WP Gate precondition, Routing Gate, IntegrationGate hard-check,
   collects parameters in 4 short steps, generates a scaffold SKILL.md from a template,
   shows a draft, writes files, and reminds about verify-skill.sh.
@@ -17,7 +17,6 @@ gates_rationale: ""
 triggers:
   slash:
     - /skill-creator
-    - /create-skill
   phrases:
     - "создай скилл <name>"
     - "новый скилл <name>"
