@@ -36,10 +36,13 @@ Versioning: [Semantic Versioning](https://semver.org/).
 
 
 
+
+
 ## [Unreleased] — обновлено 2026-06-17
 
 ### Added
 
+- `a3ecd21` feat(skills): promote agent-fault + apply-captures to L1 (WP-422 Ф7 audit)
 - `157f483` feat(agent-trace): promote uploader+recorder hook fixes to platform
 - `8793f64` feat(skill-creator): add Step 2.5 update mode for existing skills (sync from IWE WP-422 Ф7)
 - `7468c0f` feat(skill): promote bottleneck-pick L3->L1, description+phrases
@@ -50,7 +53,6 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - `53cd985` feat(day-open): add ТВС labeling step to skill template (§6b2)
 - `36febfd` feat(strategy): модель ТВС в шаблон (стратегирование + ОРЗ)
 - `673474d` feat(WP-388): проекция базы стиля — 4 новых элемента регистра (зеркало L0)
-- `dd117c5` feat(styles): WP-412 Ф11 — дисциплина языковых стилей в шаблон IWE
 
 ### Changed
 
@@ -75,7 +77,6 @@ Versioning: [Semantic Versioning](https://semver.org/).
 - `8073146` fix(WP-7): FMT delivery — .claude/styles propagation, manifest sync, smoke Test 6e
 - `cb8a1a6` fix(COL-06): communication-style-base.md — L1 → S1 (авторский слой)
 - `06b9d79` fix(WP-376): A52/A49/A50/A51 — template hygiene и agentigore sample
-- `c869a3c` fix(pull-on-touch): autostash вместо пропуска-на-грязном — тянет даже на dirty-репо
 
 
 ## [0.35.4] — 2026-06-15

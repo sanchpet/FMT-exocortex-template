@@ -907,6 +907,9 @@
     },
     {
       "path": "update.sh"
+    },
+    {
+      "path": ".claude/skills/iwe-restore/SKILL.md"
     }
   ],
   "excluded_paths": [
